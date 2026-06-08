@@ -11,6 +11,7 @@ import '../../../../core/widgets/gradient_button.dart';
 import '../../../../core/widgets/skrol_logo.dart';
 import '../../../../core/widgets/skrol_background.dart';
 import '../../../../core/services/permission_service.dart';
+import '../../../../core/platform/app_platform.dart';
 import '../../../../data/repositories/repositories.dart';
 
 class OnboardingScreen extends ConsumerStatefulWidget {
@@ -679,6 +680,35 @@ class _PermissionsPageState extends ConsumerState<_PermissionsPage>
   @override
   Widget build(BuildContext context) {
     final bottomInset = MediaQuery.viewInsetsOf(context).bottom;
+
+    if (isIOSPlatform) {
+      return GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: ListView(
+          padding: EdgeInsets.fromLTRB(32, 32, 32, 32 + bottomInset),
+          children: [
+            Text(
+              'You\'re all set',
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Focus Mode, habits, and weekly insights work on iPhone. '
+              'Automatic Reels & Shorts tracking is available on Android.',
+              style: TextStyle(color: Theme.of(context).hintColor, height: 1.5),
+            ),
+            const SizedBox(height: 32),
+            GradientButton(
+              label: 'Start My Journey',
+              icon: Icons.rocket_launch,
+              onPressed: widget.onComplete,
+            ),
+          ],
+        ),
+      );
+    }
 
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),

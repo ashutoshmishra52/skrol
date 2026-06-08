@@ -1,5 +1,6 @@
 import 'package:usage_stats/usage_stats.dart';
 import '../constants/app_packages.dart';
+import '../platform/app_platform.dart';
 
 class TimelineEntry {
   const TimelineEntry({
@@ -39,6 +40,8 @@ class AppOpenStat {
 
 class TimelineService {
   Future<List<TimelineEntry>> buildTodayTimeline() async {
+    if (!supportsUsageStats) return [];
+
     try {
       final granted = await UsageStats.checkUsagePermission() ?? false;
       if (!granted) return [];
@@ -94,6 +97,8 @@ class TimelineService {
   }
 
   Future<List<AppOpenStat>> buildTodayAppOpens() async {
+    if (!supportsUsageStats) return [];
+
     try {
       final granted = await UsageStats.checkUsagePermission() ?? false;
       if (!granted) return [];

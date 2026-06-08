@@ -32,7 +32,7 @@ class UsageTimeline extends StatelessWidget {
         ),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
             children: [
@@ -65,14 +65,19 @@ class UsageTimeline extends StatelessWidget {
               ),
             )
           else
-            ...shown.asMap().entries.map((e) {
-              final isLast = e.key == shown.length - 1;
-              return _TimelineRow(
-                entry: e.value,
-                isLast: isLast,
-                isDark: isDark,
-              );
-            }),
+            ListView.separated(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: shown.length,
+              separatorBuilder: (_, __) => const SizedBox(height: 0),
+              itemBuilder: (context, index) {
+                return _TimelineRow(
+                  entry: shown[index],
+                  isLast: index == shown.length - 1,
+                  isDark: isDark,
+                );
+              },
+            ),
         ],
       ),
     );
@@ -90,55 +95,82 @@ class _TimelineRow extends StatelessWidget {
   final bool isLast;
   final bool isDark;
 
+  static const _rowHeight = 52.0;
+  static const _railWidth = 28.0;
+
   @override
   Widget build(BuildContext context) {
-    return IntrinsicHeight(
+    final lineColor = isDark
+        ? Colors.white.withValues(alpha: 0.1)
+        : Colors.black.withValues(alpha: 0.08);
+    final dotColor = _appColor(entry.packageName);
+
+    return SizedBox(
+      height: isLast ? 40 : _rowHeight,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Column(
-            children: [
-              Container(
-                width: 10,
-                height: 10,
-                decoration: BoxDecoration(
-                  color: _appColor(entry.packageName),
-                  shape: BoxShape.circle,
-                ),
-              ),
-              if (!isLast)
-                Expanded(
-                  child: Container(
-                    width: 2,
-                    margin: const EdgeInsets.symmetric(vertical: 4),
-                    color: isDark
-                        ? Colors.white.withValues(alpha: 0.08)
-                        : Colors.black.withValues(alpha: 0.06),
+          SizedBox(
+            width: _railWidth,
+            child: Column(
+              children: [
+                const SizedBox(height: 5),
+                Container(
+                  width: 10,
+                  height: 10,
+                  decoration: BoxDecoration(
+                    color: dotColor,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: dotColor.withValues(alpha: 0.35),
+                        blurRadius: 6,
+                      ),
+                    ],
                   ),
                 ),
-            ],
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(bottom: isLast ? 0 : 18),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '${entry.formattedTime} · ${entry.appName}',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: isDark ? Colors.white : AppColors.textPrimaryLight,
+                if (!isLast)
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      child: Container(
+                        width: 2,
+                        decoration: BoxDecoration(
+                          color: lineColor,
+                          borderRadius: BorderRadius.circular(1),
+                        ),
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 2),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(top: 2, bottom: isLast ? 0 : 8),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Text(
+                      '${entry.formattedTime} · ${entry.appName}',
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        height: 1.3,
+                        color: isDark ? Colors.white : AppColors.textPrimaryLight,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
                   Text(
-                    '${entry.durationMinutes} min',
+                    _formatDuration(entry.durationMinutes),
                     style: TextStyle(
-                      fontSize: 13,
-                      color: isDark ? Colors.white54 : AppColors.textSecondaryLight,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color: dotColor,
                     ),
                   ),
                 ],
@@ -148,6 +180,14 @@ class _TimelineRow extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  static String _formatDuration(int minutes) {
+    if (minutes < 60) return '$minutes min';
+    final hours = minutes ~/ 60;
+    final mins = minutes % 60;
+    if (mins == 0) return '${hours}h';
+    return '${hours}h ${mins}m';
   }
 
   Color _appColor(String pkg) {

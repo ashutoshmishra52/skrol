@@ -3,12 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>SKROL — Track Less. Live More.</title>
-  <meta name="description" content="SKROL tracks Instagram Reels, YouTube Shorts, and screen habits. Understand your scrolling and build healthier habits. Download free on Android.">
-  <meta name="keywords" content="SKROL, screen time, reels tracker, shorts tracker, doomscrolling, digital wellness">
+  <title>SKROL — Screen Time &amp; Reels Tracker App | Android &amp; iOS</title>
+  <meta name="description" content="SKROL is a free digital wellness app to track Instagram Reels, YouTube Shorts, and screen time. Focus mode, weekly reports, and private on-device insights. Download for Android and iPhone.">
+  <meta name="keywords" content="SKROL, skrol app, screen time tracker, reels tracker, shorts tracker, doomscrolling app, digital wellness, Instagram reels counter, YouTube shorts tracker, focus mode app, Android APK, iOS app">
   <meta name="author" content="SKROL">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="theme-color" content="#0A0A0F">
   <link rel="canonical" href="https://skrol.in/">
   <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
   <link rel="preload" href="assets/screenshots/dashboard.png" as="image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,33 +20,114 @@
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://skrol.in/">
-  <meta property="og:title" content="SKROL — Track Less. Live More.">
-  <meta property="og:description" content="Track Reels, Shorts and screen habits. Personal insights to help you scroll less.">
+  <meta property="og:site_name" content="SKROL">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:title" content="SKROL — Screen Time &amp; Reels Tracker">
+  <meta property="og:description" content="Track Reels, Shorts and screen habits. Personal insights to help you scroll less. Free on Android and iOS.">
   <meta property="og:image" content="https://skrol.in/assets/screenshots/dashboard.png">
+  <meta property="og:image:alt" content="SKROL app dashboard showing attention score and Reels count">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SKROL — Track Less. Live More.">
   <meta name="twitter:description" content="Track Reels, Shorts and screen habits. Personal insights to help you scroll less.">
   <meta name="twitter:image" content="https://skrol.in/assets/screenshots/dashboard.png">
+  <meta name="apple-mobile-web-app-title" content="SKROL">
 
   <link rel="stylesheet" href="css/styles.css">
+
+  <script>
+    (function () {
+      var ua = navigator.userAgent || '';
+      var platform = 'other';
+      if (/android/i.test(ua)) platform = 'android';
+      else if (/iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) platform = 'ios';
+      document.documentElement.setAttribute('data-platform', platform);
+    })();
+  </script>
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "MobileApplication",
-    "name": "SKROL",
-    "operatingSystem": "Android",
-    "applicationCategory": "HealthApplication",
-    "description": "Premium short-form content tracking app helping users reduce doomscrolling.",
-    "url": "https://skrol.in",
-    "screenshot": "https://skrol.in/assets/screenshots/dashboard.png",
-    "downloadUrl": "https://skrol.in/downloads/skrol.apk",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "SKROL",
+        "url": "https://skrol.in",
+        "logo": "https://skrol.in/assets/skrol_logo.png",
+        "email": "hello@skrol.in",
+        "sameAs": ["https://github.com/ashutoshmishra52/skrol"]
+      },
+      {
+        "@type": "WebSite",
+        "name": "SKROL",
+        "url": "https://skrol.in",
+        "description": "Official website for SKROL — screen time and Reels tracker app."
+      },
+      {
+        "@type": "MobileApplication",
+        "name": "SKROL for Android",
+        "operatingSystem": "Android",
+        "applicationCategory": "HealthApplication",
+        "description": "Track Instagram Reels, YouTube Shorts, and screen time with private on-device insights.",
+        "url": "https://skrol.in",
+        "downloadUrl": "https://skrol.in/downloads/android/skrol.apk",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+        "screenshot": "https://skrol.in/assets/screenshots/dashboard.png"
+      },
+      {
+        "@type": "MobileApplication",
+        "name": "SKROL for iOS",
+        "operatingSystem": "iOS",
+        "applicationCategory": "HealthApplication",
+        "description": "Focus mode, habits, and digital wellness insights for iPhone.",
+        "url": "https://skrol.in",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+        "screenshot": "https://skrol.in/assets/screenshots/focus.png"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does SKROL track Instagram Reels?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "On Android, SKROL uses Accessibility Service to detect when you scroll to a new reel. Each scroll increments your counter. Data stays on your device."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is SKROL available on iPhone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. SKROL for iOS includes Focus Mode, habits, and insights. Automatic Reels tracking is available on Android."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my data private?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. SKROL stores everything locally on your device. No cloud sync, no account, no third-party analytics."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 </head>
 <body>
+
+  <div class="platform-banner" id="platformBanner" hidden>
+    <div class="container platform-banner-inner">
+      <div class="platform-banner-copy">
+        <img src="assets/favicon.png" alt="" width="28" height="28">
+        <span id="platformBannerText">Get SKROL</span>
+      </div>
+      <a href="#" id="platformBannerBtn" class="platform-banner-btn">Download</a>
+    </div>
+  </div>
 
   <div class="page-noise" aria-hidden="true"></div>
 
@@ -57,7 +142,8 @@
         <li><a href="#screenshots">Screenshots</a></li>
         <li><a href="#insights">Insights</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="downloads/skrol.apk" id="navDownloadBtn" class="nav-cta" download="skrol.apk">Download</a></li>
+        <li><a href="#download">Download</a></li>
+        <li><a href="downloads/android/skrol.apk" id="navDownloadBtn" class="nav-cta" data-dl-android download="skrol.apk">Download APK</a></li>
       </ul>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">☰</button>
     </div>
@@ -66,8 +152,8 @@
   <header class="hero">
     <div class="container hero-inner">
       <img src="assets/skrol_logo.png" alt="SKROL" class="hero-logo" width="88" height="88">
-      <p class="hero-eyebrow">Digital wellness · Android</p>
-      <h1>SKROL</h1>
+      <p class="hero-eyebrow">Digital wellness · Android &amp; iOS</p>
+      <h1>SKROL — Screen Time &amp; Reels Tracker</h1>
       <p class="hero-tagline">Track Less. Live More.</p>
       <p class="hero-sub">Track Instagram Reels, YouTube Shorts, and screen time. Understand your habits and scroll with intention — privately, on your device.</p>
       <ul class="hero-features">
@@ -76,13 +162,14 @@
         <li>Focus Mode</li>
       </ul>
       <div class="hero-buttons">
-        <a href="downloads/skrol.apk" id="heroDownloadBtn" class="btn-primary" download="skrol.apk">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download APK
+        <a href="downloads/android/skrol.apk" class="btn-primary" id="heroDownloadBtn" data-dl-android download="skrol.apk">
+          <svg class="hero-dl-icon hero-dl-icon-android" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <svg class="hero-dl-icon hero-dl-icon-ios" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" hidden><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <span id="heroDownloadLabel">Download APK</span>
         </a>
         <a href="#screenshots" class="btn-secondary">View App</a>
       </div>
-      <p class="hero-note">Free · No account · Data stays on device</p>
+      <p class="hero-note" id="heroNote">Free · No account · Data stays on device</p>
     </div>
   </header>
 
@@ -299,35 +386,43 @@
   <section id="download" class="download-section">
     <div class="container">
       <p class="section-label">Download</p>
-      <h2 class="section-title">Get SKROL on Android</h2>
-      <p class="section-desc center">Direct APK download — Play Store coming soon.</p>
-      <div class="download-box">
-        <img src="assets/skrol_logo.png" alt="SKROL brain mascot" width="80" height="80">
-        <h3>SKROL for Android</h3>
-        <p class="download-version">Latest release · ~59 MB</p>
-        <div class="store-buttons">
-          <a href="downloads/skrol.apk" id="downloadBtn" class="store-btn android" download="skrol.apk">
+      <h2 class="section-title">Get SKROL on your phone</h2>
+      <p class="section-desc center">Android APK ready now. iOS beta — request TestFlight access.</p>
+      <div class="download-platforms">
+        <div class="download-box platform dl-android-card" id="androidDownloadCard">
+          <img src="assets/skrol_logo.png" alt="SKROL for Android" width="72" height="72">
+          <h3>Android</h3>
+          <p class="download-version">Latest release · ~59 MB · APK</p>
+          <a href="downloads/android/skrol.apk" id="downloadBtn" class="store-btn android" download="skrol.apk">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             <span>
               Download APK
-              <small>Install directly on your phone</small>
+              <small>Reels, Shorts &amp; screen time tracking</small>
             </span>
           </a>
-          <div class="store-btn ios">
-            <span>
-              Coming Soon on iOS
-              <small>Stay tuned</small>
-            </span>
-          </div>
+          <details class="install-steps">
+            <summary>How to install on Android</summary>
+            <ol>
+              <li>Download <code>skrol.apk</code> on your phone.</li>
+              <li>Open the file and allow install from browser if prompted.</li>
+              <li>Enable Accessibility for Reels/Shorts tracking in SKROL Settings.</li>
+            </ol>
+          </details>
         </div>
-        <details class="install-steps">
-          <summary>How to install the APK</summary>
-          <ol>
-            <li>Download <code>skrol.apk</code> on your Android phone.</li>
-            <li>Open the file and allow install from browser if prompted.</li>
-            <li>Enable Accessibility for Reels/Shorts tracking in SKROL Settings.</li>
-          </ol>
-        </details>
+
+        <div class="download-box platform dl-ios-card" id="iosDownloadCard">
+          <img src="assets/skrol_logo.png" alt="SKROL for iPhone" width="72" height="72">
+          <h3>iPhone / iOS</h3>
+          <p class="download-version">Beta · Focus Mode &amp; insights</p>
+          <a href="mailto:hello@skrol.in?subject=SKROL%20iOS%20TestFlight" id="iosDownloadBtn" class="store-btn ios active">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <span>
+              Request iOS Beta
+              <small>TestFlight invite via email</small>
+            </span>
+          </a>
+          <p class="platform-note">Full Reels auto-tracking is on Android. iOS includes Focus Mode, habits, and weekly insights.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -362,9 +457,15 @@
           </div>
         </div>
         <div class="faq-item">
+          <button class="faq-question">Is SKROL available on iPhone?</button>
+          <div class="faq-answer">
+            <p>Yes. SKROL for iOS includes Focus Mode, habits, and weekly insights. Automatic Reels and Shorts scroll counting is currently available on Android due to platform restrictions on iOS.</p>
+          </div>
+        </div>
+        <div class="faq-item">
           <button class="faq-question">Why download APK instead of Play Store?</button>
           <div class="faq-answer">
-            <p>SKROL is rolling out on Play Store soon. Until then, you can install the official APK directly from skrol.in — same app, same updates.</p>
+            <p>SKROL is rolling out on Play Store soon. Until then, install the official APK from skrol.in/downloads/android/ — same app, same updates.</p>
           </div>
         </div>
       </div>
@@ -379,7 +480,10 @@
           <h3>SKROL</h3>
           <p class="footer-tagline">Track Less. Live More.</p>
           <p class="footer-url"><a href="https://skrol.in">https://skrol.in</a></p>
-          <a href="downloads/skrol.apk" id="footerDownloadBtn" class="footer-dl" download="skrol.apk">Download APK</a>
+          <div class="footer-downloads">
+            <a href="downloads/android/skrol.apk" id="footerDownloadBtn" class="footer-dl" download="skrol.apk">Android APK</a>
+            <a href="mailto:hello@skrol.in?subject=SKROL%20iOS%20TestFlight" class="footer-dl footer-dl-ios">iOS Beta</a>
+          </div>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>

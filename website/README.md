@@ -36,21 +36,26 @@ python3 -m http.server 8080
 
 ## APK download
 
-Release APK lives at `downloads/skrol.apk`. To update:
+Release APK lives at `downloads/android/skrol.apk`. To update:
 
 ```bash
 flutter build apk --release
-cp build/app/outputs/flutter-apk/app-release.apk website/downloads/skrol.apk
+cp build/app/outputs/flutter-apk/app-release.apk website/downloads/android/skrol.apk
 ```
 
-## Before launch
+## iOS
 
-1. Update Play Store URL in `js/main.js` (`PLAY_STORE_URL`) when listed
-2. Point `skrol.in` DNS to your host (deploy `website/` folder)
-3. Enable HTTPS
+iOS project is in the repo root `ios/` folder. Build requires Mac with Xcode + CocoaPods:
+
+```bash
+cd ios && pod install && cd ..
+flutter build ios --release
+```
+
+TestFlight builds go in `downloads/ios/` when ready.
 
 ## SEO
 
-- Meta tags + Open Graph on index.html
-- JSON-LD structured data (MobileApplication)
-- Semantic HTML, fast load (no frameworks)
+- `robots.txt` and `sitemap.xml` in website root
+- Meta tags + Open Graph + JSON-LD on index.html
+- Submit https://skrol.in/sitemap.xml in Google Search Console

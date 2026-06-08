@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
+import '../platform/app_platform.dart';
 
 class PermissionBanner extends StatelessWidget {
   const PermissionBanner({
@@ -21,6 +22,35 @@ class PermissionBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (isIOSPlatform) {
+      return Container(
+        margin: const EdgeInsets.only(bottom: 16),
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: Theme.of(context).dividerColor),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(Icons.phone_iphone, color: AppColors.primary, size: 22),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                'Reels & Shorts auto-tracking runs on Android. On iPhone, use Focus Mode and insights to build healthier habits.',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Theme.of(context).hintColor,
+                  height: 1.45,
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
     if (usageGranted && accessibilityGranted && overlayGranted) {
       return const SizedBox.shrink();
     }

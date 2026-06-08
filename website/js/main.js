@@ -1,7 +1,47 @@
 // SKROL Landing — skrol.in
 
-const APK_URL = 'downloads/skrol.apk';
+const APK_URL = 'downloads/android/skrol.apk';
 const PLAY_STORE_URL = '';
+const APP_STORE_URL = '';
+const IOS_BETA_URL = 'mailto:hello@skrol.in?subject=SKROL%20iOS%20TestFlight';
+
+const PLATFORM = document.documentElement.getAttribute('data-platform') || detectPlatform();
+
+function detectPlatform() {
+  const ua = navigator.userAgent || '';
+  if (/android/i.test(ua)) return 'android';
+  if (/iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+    return 'ios';
+  }
+  return 'other';
+}
+
+const PLATFORM_COPY = {
+  android: {
+    navLabel: 'Download APK',
+    heroLabel: 'Download APK',
+    bannerText: 'SKROL for Android',
+    bannerBtn: 'Download APK',
+    heroNote: 'Free APK · Reels & Shorts tracking · No account',
+    navStyle: 'android',
+  },
+  ios: {
+    navLabel: APP_STORE_URL ? 'App Store' : 'Get on iPhone',
+    heroLabel: APP_STORE_URL ? 'Download on App Store' : 'Get on iPhone',
+    bannerText: 'SKROL for iPhone',
+    bannerBtn: APP_STORE_URL ? 'App Store' : 'Request Beta',
+    heroNote: 'Focus Mode & insights · iOS beta available',
+    navStyle: 'ios',
+  },
+  other: {
+    navLabel: 'Download',
+    heroLabel: 'Get SKROL',
+    bannerText: 'Get SKROL',
+    bannerBtn: 'Download',
+    heroNote: 'Free · No account · Data stays on device',
+    navStyle: 'default',
+  },
+};
 
 let scrollLockCount = 0;
 
@@ -14,6 +54,118 @@ function unlockScroll() {
   scrollLockCount = Math.max(0, scrollLockCount - 1);
   if (!scrollLockCount) document.body.style.overflow = '';
 }
+
+function setupAndroidDownload(el) {
+  if (!el) return;
+  if (!PLAY_STORE_URL) {
+    el.href = APK_URL;
+    el.setAttribute('download', 'skrol.apk');
+    el.removeAttribute('target');
+    el.removeAttribute('rel');
+  } else {
+    el.href = PLAY_STORE_URL;
+    el.target = '_blank';
+    el.rel = 'noopener';
+    el.removeAttribute('download');
+  }
+}
+
+function setupIOSDownload(el) {
+  if (!el) return;
+  if (APP_STORE_URL) {
+    el.href = APP_STORE_URL;
+    el.target = '_blank';
+    el.rel = 'noopener';
+    el.removeAttribute('download');
+  } else {
+    el.href = IOS_BETA_URL;
+    el.removeAttribute('target');
+    el.removeAttribute('rel');
+    el.removeAttribute('download');
+  }
+}
+
+function applyPlatformUI() {
+  const copy = PLATFORM_COPY[PLATFORM] || PLATFORM_COPY.other;
+  document.body.classList.add(`platform-${PLATFORM}`);
+
+  const navBtn = document.getElementById('navDownloadBtn');
+  const heroBtn = document.getElementById('heroDownloadBtn');
+  const heroLabel = document.getElementById('heroDownloadLabel');
+  const heroNote = document.getElementById('heroNote');
+  const banner = document.getElementById('platformBanner');
+  const bannerText = document.getElementById('platformBannerText');
+  const bannerBtn = document.getElementById('platformBannerBtn');
+  const androidIcon = document.querySelector('.hero-dl-icon-android');
+  const iosIcon = document.querySelector('.hero-dl-icon-ios');
+
+  if (PLATFORM === 'android') {
+    setupAndroidDownload(navBtn);
+    setupAndroidDownload(heroBtn);
+    setupAndroidDownload(bannerBtn);
+    setupAndroidDownload(document.getElementById('downloadBtn'));
+    setupAndroidDownload(document.getElementById('footerDownloadBtn'));
+
+    if (navBtn) {
+      navBtn.textContent = copy.navLabel;
+      navBtn.classList.add('nav-cta-android');
+    }
+    if (heroLabel) heroLabel.textContent = copy.heroLabel;
+    if (heroNote) heroNote.textContent = copy.heroNote;
+    if (androidIcon) androidIcon.hidden = false;
+    if (iosIcon) iosIcon.hidden = true;
+
+    document.getElementById('androidDownloadCard')?.classList.add('platform-highlight');
+    document.getElementById('iosDownloadCard')?.classList.add('platform-muted');
+  } else if (PLATFORM === 'ios') {
+    setupIOSDownload(navBtn);
+    setupIOSDownload(heroBtn);
+    setupIOSDownload(bannerBtn);
+    setupIOSDownload(document.getElementById('iosDownloadBtn'));
+
+    if (navBtn) {
+      navBtn.textContent = copy.navLabel;
+      navBtn.classList.remove('nav-cta-android');
+      navBtn.classList.add('nav-cta-ios');
+      navBtn.removeAttribute('download');
+    }
+    if (heroBtn) {
+      heroBtn.removeAttribute('download');
+      heroBtn.classList.add('btn-primary-ios');
+    }
+    if (heroLabel) heroLabel.textContent = copy.heroLabel;
+    if (heroNote) heroNote.textContent = copy.heroNote;
+    if (androidIcon) androidIcon.hidden = true;
+    if (iosIcon) iosIcon.hidden = false;
+
+    document.getElementById('iosDownloadCard')?.classList.add('platform-highlight');
+    document.getElementById('androidDownloadCard')?.classList.add('platform-muted');
+  } else {
+    setupAndroidDownload(document.getElementById('downloadBtn'));
+    setupAndroidDownload(document.getElementById('footerDownloadBtn'));
+    setupIOSDownload(document.getElementById('iosDownloadBtn'));
+
+    if (navBtn) navBtn.href = '#download';
+    if (heroBtn) {
+      heroBtn.href = '#download';
+      heroBtn.removeAttribute('download');
+    }
+    if (heroLabel) heroLabel.textContent = copy.heroLabel;
+    if (heroNote) heroNote.textContent = copy.heroNote;
+    if (androidIcon) androidIcon.hidden = false;
+    if (iosIcon) iosIcon.hidden = true;
+  }
+
+  if (banner && bannerText && bannerBtn && (PLATFORM === 'android' || PLATFORM === 'ios')) {
+    banner.hidden = false;
+    document.body.classList.add('has-platform-banner');
+    bannerText.textContent = copy.bannerText;
+    bannerBtn.textContent = copy.bannerBtn;
+    if (PLATFORM === 'ios') bannerBtn.classList.add('platform-banner-btn-ios');
+  }
+}
+
+applyPlatformUI();
 
 // Mobile menu
 const menuBtn = document.getElementById('menuBtn');
@@ -48,24 +200,6 @@ document.querySelectorAll('.faq-question').forEach((btn) => {
     document.querySelectorAll('.faq-item').forEach((i) => i.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
   });
-});
-
-// Download links
-function setupDownload(el) {
-  if (!el) return;
-  if (!PLAY_STORE_URL) {
-    el.href = APK_URL;
-    el.setAttribute('download', 'skrol.apk');
-  } else {
-    el.href = PLAY_STORE_URL;
-    el.target = '_blank';
-    el.rel = 'noopener';
-    el.removeAttribute('download');
-  }
-}
-
-['downloadBtn', 'heroDownloadBtn', 'navDownloadBtn', 'footerDownloadBtn'].forEach((id) => {
-  setupDownload(document.getElementById(id));
 });
 
 // Screenshot gallery + lightbox
@@ -161,7 +295,7 @@ const observer = new IntersectionObserver(
 );
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const animateTargets = document.querySelectorAll('.screen-card, .feature-card, .why-item, .insight-stat');
+const animateTargets = document.querySelectorAll('.screen-card, .feature-card, .why-item, .insight-stat, .download-box.platform');
 
 if (!prefersReducedMotion) {
   animateTargets.forEach((el) => {

@@ -6,6 +6,7 @@ import 'core/services/hive_service.dart';
 import 'core/services/notification_service.dart';
 import 'core/services/home_widget_service.dart';
 import 'core/services/app_services.dart';
+import 'core/platform/app_platform.dart';
 import 'data/repositories/repositories.dart';
 import 'data/models/habit.dart';
 import 'core/constants/app_constants.dart';
@@ -30,7 +31,9 @@ void main() async {
 
   await HiveService.init();
   await NotificationService().init();
-  await HomeWidgetService.init();
+  if (isAndroidPlatform) {
+    await HomeWidgetService.init();
+  }
   await _seedDefaultData();
 
   runApp(

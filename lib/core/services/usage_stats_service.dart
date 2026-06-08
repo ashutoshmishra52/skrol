@@ -4,6 +4,7 @@ import 'package:usage_stats/usage_stats.dart';
 import '../../core/constants/app_packages.dart';
 import '../../data/models/app_usage.dart';
 import '../../data/repositories/repositories.dart';
+import '../platform/app_platform.dart';
 
 class UsageStatsService {
   UsageStatsService();
@@ -13,6 +14,8 @@ class UsageStatsService {
   final UsageRepository _usageRepo = UsageRepository();
 
   Future<bool> hasPermission() async {
+    if (!supportsUsageStats) return false;
+
     try {
       return await UsageStats.checkUsagePermission() ?? false;
     } catch (_) {
@@ -22,6 +25,8 @@ class UsageStatsService {
 
   /// Accurate today sync via native UsageStatsManager event pairing.
   Future<void> syncUsageData({int days = 1}) async {
+    if (!supportsUsageStats) return;
+
     try {
       final now = DateTime.now();
       final today = DateTime(now.year, now.month, now.day);

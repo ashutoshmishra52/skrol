@@ -16,7 +16,15 @@ class NotificationService {
 
     const androidSettings =
         AndroidInitializationSettings('@drawable/ic_launcher');
-    const initSettings = InitializationSettings(android: androidSettings);
+    const iosSettings = DarwinInitializationSettings(
+      requestAlertPermission: false,
+      requestBadgePermission: false,
+      requestSoundPermission: false,
+    );
+    const initSettings = InitializationSettings(
+      android: androidSettings,
+      iOS: iosSettings,
+    );
 
     await _plugin.initialize(
       initSettings,
@@ -47,12 +55,17 @@ class NotificationService {
       priority: Priority.high,
       icon: '@drawable/ic_launcher',
     );
+    const iosDetails = DarwinNotificationDetails(
+      presentAlert: true,
+      presentBadge: true,
+      presentSound: true,
+    );
 
     await _plugin.show(
       id,
       title,
       body,
-      NotificationDetails(android: androidDetails),
+      const NotificationDetails(android: androidDetails, iOS: iosDetails),
       payload: payload,
     );
   }

@@ -131,6 +131,105 @@ strong { color: var(--gold-light); font-weight: 600; }
   cursor: pointer;
 }
 
+/* Platform-aware top download bar (Android / iPhone) */
+.platform-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: linear-gradient(135deg, #14141c, #0a0a0f);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+  padding: 10px 0;
+  padding-top: max(10px, env(safe-area-inset-top));
+}
+
+.platform-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.platform-banner-copy {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.platform-banner-copy img {
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.platform-banner-copy span {
+  font-size: 0.88rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.platform-banner-btn {
+  flex-shrink: 0;
+  padding: 10px 16px;
+  background: var(--gold);
+  color: #080808;
+  font-weight: 700;
+  font-size: 0.82rem;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.platform-banner-btn-ios {
+  background: #fff;
+  color: #080808;
+}
+
+body.has-platform-banner .nav {
+  top: calc(52px + env(safe-area-inset-top, 0px));
+}
+
+body.has-platform-banner .hero {
+  padding-top: calc(140px + 52px + env(safe-area-inset-top, 0px));
+}
+
+html[data-platform="android"] .dl-ios-card.platform-muted,
+html[data-platform="ios"] .dl-android-card.platform-muted {
+  opacity: 0.55;
+  transform: scale(0.98);
+}
+
+.download-box.platform-highlight {
+  border-color: rgba(212, 175, 55, 0.55);
+  box-shadow: 0 32px 100px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.15);
+}
+
+.nav-cta-ios {
+  background: #fff !important;
+  color: #080808 !important;
+}
+
+.btn-primary-ios {
+  background: #fff;
+  color: #080808;
+}
+
+.btn-primary-ios:hover {
+  box-shadow: 0 16px 48px rgba(255, 255, 255, 0.15);
+}
+
+html[data-platform="android"] .hero-dl-icon-ios,
+html[data-platform="ios"] .hero-dl-icon-android {
+  display: none;
+}
+
+html[data-platform="android"] .hero-dl-icon-android,
+html[data-platform="ios"] .hero-dl-icon-ios {
+  display: block;
+}
+
 /* Hero */
 .hero {
   padding: 140px 0 80px;
@@ -734,6 +833,15 @@ section { padding: 120px 0; }
 /* Download */
 .download-section { text-align: center; }
 
+.download-platforms {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .download-box {
   display: inline-flex;
   flex-direction: column;
@@ -746,6 +854,12 @@ section { padding: 120px 0; }
   max-width: 520px;
   margin: 0 auto;
   box-shadow: 0 32px 100px rgba(0, 0, 0, 0.5);
+}
+
+.download-box.platform {
+  max-width: none;
+  width: 100%;
+  padding: 40px 32px;
 }
 
 .download-box img {
@@ -801,6 +915,37 @@ section { padding: 120px 0; }
   border: 1px solid var(--border);
   color: var(--text-muted);
   cursor: default;
+}
+
+.store-btn.ios.active {
+  background: linear-gradient(135deg, #2a2a35, #1a1a22);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+}
+
+.store-btn.ios.active:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 175, 55, 0.35);
+}
+
+.platform-note {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-top: 4px;
+}
+
+.footer-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.footer-dl-ios {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 .store-btn span { display: block; text-align: left; }

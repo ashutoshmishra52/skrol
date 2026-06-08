@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:usage_stats/usage_stats.dart';
 import '../../data/repositories/repositories.dart';
+import '../platform/app_platform.dart';
 
 import 'native_stats_service.dart';
 
@@ -19,9 +20,10 @@ class PermissionStatus {
   final bool accessibilityGranted;
   final bool overlayGranted;
 
-  bool get allRequiredGranted => usageStatsGranted;
+  bool get allRequiredGranted => supportsUsageStats ? usageStatsGranted : true;
 
-  bool get reelCounterReady => accessibilityGranted && overlayGranted;
+  bool get reelCounterReady =>
+      supportsReelsTracking && accessibilityGranted && overlayGranted;
 }
 
 class PermissionService {
@@ -29,6 +31,16 @@ class PermissionService {
   final SettingsRepository _settingsRepo = SettingsRepository();
 
   Future<PermissionStatus> checkAll() async {
+    if (isIOSPlatform) {
+      final notificationGranted = await Permission.notification.isGranted;
+      return PermissionStatus(
+        usageStatsGranted: false,
+        notificationGranted: notificationGranted,
+        accessibilityGranted: false,
+        overlayGranted: false,
+      );
+    }
+
     final usageGranted = await UsageStats.checkUsagePermission() ?? false;
     final notificationGranted = await Permission.notification.isGranted;
     final accessibilityGranted = await NativeStatsService.isAccessibilityEnabled();
@@ -56,6 +68,8 @@ class PermissionService {
   /// Opens system Usage Access settings. User must tap Allow for SKROL.
   /// Re-check permission when app resumes (Settings → back to app).
   Future<bool> requestUsageStats() async {
+    if (!supportsUsageStats) return false;
+
     final alreadyGranted = await UsageStats.checkUsagePermission() ?? false;
     if (alreadyGranted) {
       await _updateUsageGranted(true);
@@ -77,6 +91,8 @@ class PermissionService {
   }
 
   Future<bool> recheckUsageStatsAfterSettings() async {
+    if (!supportsUsageStats) return false;
+
     final granted = await UsageStats.checkUsagePermission() ?? false;
     await _updateUsageGranted(granted);
     return granted;
