@@ -43,16 +43,14 @@ flutter build apk --release
 cp build/app/outputs/flutter-apk/app-release.apk website/downloads/android/skrol.apk
 ```
 
-## iOS
+## iOS IPA
 
-iOS project is in the repo root `ios/` folder. Build requires Mac with Xcode + CocoaPods:
+Release IPA lives at `downloads/ios/skrol.ipa`. To build and update (requires Mac + Xcode + CocoaPods):
 
 ```bash
-cd ios && pod install && cd ..
-flutter build ios --release
+chmod +x scripts/build_ios_website.sh
+./scripts/build_ios_website.sh
 ```
-
-TestFlight builds go in `downloads/ios/` when ready.
 
 ## SEO
 

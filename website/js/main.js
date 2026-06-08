@@ -1,45 +1,40 @@
 // SKROL Landing — skrol.in
 
-const APK_URL = 'downloads/android/skrol.apk';
+const APK_URL = '/downloads/android/skrol.apk';
+const IPA_URL = '/downloads/ios/skrol.ipa';
 const PLAY_STORE_URL = '';
 const APP_STORE_URL = '';
-const IOS_BETA_URL = 'mailto:hello@skrol.in?subject=SKROL%20iOS%20TestFlight';
 
 const PLATFORM = document.documentElement.getAttribute('data-platform') || detectPlatform();
 
 function detectPlatform() {
   const ua = navigator.userAgent || '';
+  const isIOS = /iPhone|iPad|iPod/i.test(ua)
+    || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (isIOS) return 'ios';
   if (/android/i.test(ua)) return 'android';
-  if (/iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
-    return 'ios';
-  }
   return 'other';
+}
+
+function useDirectFileLink() {
+  return PLATFORM === 'android' || PLATFORM === 'ios';
 }
 
 const PLATFORM_COPY = {
   android: {
     navLabel: 'Download APK',
     heroLabel: 'Download APK',
-    bannerText: 'SKROL for Android',
-    bannerBtn: 'Download APK',
     heroNote: 'Free APK · Reels & Shorts tracking · No account',
-    navStyle: 'android',
   },
   ios: {
-    navLabel: APP_STORE_URL ? 'App Store' : 'Get on iPhone',
-    heroLabel: APP_STORE_URL ? 'Download on App Store' : 'Get on iPhone',
-    bannerText: 'SKROL for iPhone',
-    bannerBtn: APP_STORE_URL ? 'App Store' : 'Request Beta',
-    heroNote: 'Focus Mode & insights · iOS beta available',
-    navStyle: 'ios',
+    navLabel: APP_STORE_URL ? 'App Store' : 'Download IPA',
+    heroLabel: APP_STORE_URL ? 'Download on App Store' : 'Download IPA',
+    heroNote: 'Direct IPA · Focus Mode & insights · No account',
   },
   other: {
     navLabel: 'Download',
     heroLabel: 'Get SKROL',
-    bannerText: 'Get SKROL',
-    bannerBtn: 'Download',
     heroNote: 'Free · No account · Data stays on device',
-    navStyle: 'default',
   },
 };
 
@@ -59,7 +54,11 @@ function setupAndroidDownload(el) {
   if (!el) return;
   if (!PLAY_STORE_URL) {
     el.href = APK_URL;
-    el.setAttribute('download', 'skrol.apk');
+    if (useDirectFileLink()) {
+      el.removeAttribute('download');
+    } else {
+      el.setAttribute('download', 'skrol.apk');
+    }
     el.removeAttribute('target');
     el.removeAttribute('rel');
   } else {
@@ -78,10 +77,10 @@ function setupIOSDownload(el) {
     el.rel = 'noopener';
     el.removeAttribute('download');
   } else {
-    el.href = IOS_BETA_URL;
+    el.href = IPA_URL;
+    el.removeAttribute('download');
     el.removeAttribute('target');
     el.removeAttribute('rel');
-    el.removeAttribute('download');
   }
 }
 
@@ -93,16 +92,12 @@ function applyPlatformUI() {
   const heroBtn = document.getElementById('heroDownloadBtn');
   const heroLabel = document.getElementById('heroDownloadLabel');
   const heroNote = document.getElementById('heroNote');
-  const banner = document.getElementById('platformBanner');
-  const bannerText = document.getElementById('platformBannerText');
-  const bannerBtn = document.getElementById('platformBannerBtn');
   const androidIcon = document.querySelector('.hero-dl-icon-android');
   const iosIcon = document.querySelector('.hero-dl-icon-ios');
 
   if (PLATFORM === 'android') {
     setupAndroidDownload(navBtn);
     setupAndroidDownload(heroBtn);
-    setupAndroidDownload(bannerBtn);
     setupAndroidDownload(document.getElementById('downloadBtn'));
     setupAndroidDownload(document.getElementById('footerDownloadBtn'));
 
@@ -120,19 +115,15 @@ function applyPlatformUI() {
   } else if (PLATFORM === 'ios') {
     setupIOSDownload(navBtn);
     setupIOSDownload(heroBtn);
-    setupIOSDownload(bannerBtn);
     setupIOSDownload(document.getElementById('iosDownloadBtn'));
+    setupIOSDownload(document.getElementById('footerDownloadIosBtn'));
 
     if (navBtn) {
       navBtn.textContent = copy.navLabel;
       navBtn.classList.remove('nav-cta-android');
       navBtn.classList.add('nav-cta-ios');
-      navBtn.removeAttribute('download');
     }
-    if (heroBtn) {
-      heroBtn.removeAttribute('download');
-      heroBtn.classList.add('btn-primary-ios');
-    }
+    if (heroBtn) heroBtn.classList.add('btn-primary-ios');
     if (heroLabel) heroLabel.textContent = copy.heroLabel;
     if (heroNote) heroNote.textContent = copy.heroNote;
     if (androidIcon) androidIcon.hidden = true;
@@ -144,6 +135,7 @@ function applyPlatformUI() {
     setupAndroidDownload(document.getElementById('downloadBtn'));
     setupAndroidDownload(document.getElementById('footerDownloadBtn'));
     setupIOSDownload(document.getElementById('iosDownloadBtn'));
+    setupIOSDownload(document.getElementById('footerDownloadIosBtn'));
 
     if (navBtn) navBtn.href = '#download';
     if (heroBtn) {
@@ -154,14 +146,6 @@ function applyPlatformUI() {
     if (heroNote) heroNote.textContent = copy.heroNote;
     if (androidIcon) androidIcon.hidden = false;
     if (iosIcon) iosIcon.hidden = true;
-  }
-
-  if (banner && bannerText && bannerBtn && (PLATFORM === 'android' || PLATFORM === 'ios')) {
-    banner.hidden = false;
-    document.body.classList.add('has-platform-banner');
-    bannerText.textContent = copy.bannerText;
-    bannerBtn.textContent = copy.bannerBtn;
-    if (PLATFORM === 'ios') bannerBtn.classList.add('platform-banner-btn-ios');
   }
 }
 

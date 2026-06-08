@@ -1,0 +1,12 @@
+<IfModule mod_headers.c>
+  <FilesMatch "skrol\.apk$">
+    Header set Content-Type "application/vnd.android.package-archive"
+    Header set Content-Disposition "attachment; filename=skrol.apk"
+    Header set X-Content-Type-Options "nosniff"
+  </FilesMatch>
+  <FilesMatch "skrol\.ipa$">
+    Header set Content-Type "application/octet-stream"
+    Header set Content-Disposition "attachment; filename=skrol.ipa"
+    Header set X-Content-Type-Options "nosniff"
+  </FilesMatch>
+</IfModule>
