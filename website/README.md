@@ -34,10 +34,19 @@ python3 -m http.server 8080
 # Open http://localhost:8080
 ```
 
+## APK download
+
+Release APK lives at `downloads/skrol.apk`. To update:
+
+```bash
+flutter build apk --release
+cp build/app/outputs/flutter-apk/app-release.apk website/downloads/skrol.apk
+```
+
 ## Before launch
 
-1. Update Play Store URL in `js/main.js` (`PLAY_STORE_URL`)
-2. Point `skrol.in` DNS to your host
+1. Update Play Store URL in `js/main.js` (`PLAY_STORE_URL`) when listed
+2. Point `skrol.in` DNS to your host (deploy `website/` folder)
 3. Enable HTTPS
 
 ## SEO

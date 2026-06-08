@@ -1,14 +1,14 @@
 // SKROL Landing — skrol.in
 
+const APK_URL = 'downloads/skrol.apk';
+const PLAY_STORE_URL = '';
+
 // Mobile menu
 const menuBtn = document.getElementById('menuBtn');
 const navLinks = document.getElementById('navLinks');
 
 if (menuBtn && navLinks) {
-  menuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-  });
-
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => navLinks.classList.remove('open'));
   });
@@ -24,11 +24,72 @@ document.querySelectorAll('.faq-question').forEach((btn) => {
   });
 });
 
-// Play Store link — update when published
-const PLAY_STORE_URL = '#'; // Replace with Play Store URL
-const playBtn = document.getElementById('playStoreBtn');
-if (playBtn && PLAY_STORE_URL !== '#') {
-  playBtn.href = PLAY_STORE_URL;
-  playBtn.target = '_blank';
-  playBtn.rel = 'noopener';
+// Download links
+function setupDownload(el) {
+  if (!el) return;
+  if (!PLAY_STORE_URL) {
+    el.href = APK_URL;
+    el.setAttribute('download', 'skrol.apk');
+  } else {
+    el.href = PLAY_STORE_URL;
+    el.target = '_blank';
+    el.rel = 'noopener';
+    el.removeAttribute('download');
+  }
 }
+
+['downloadBtn', 'heroDownloadBtn', 'navDownloadBtn', 'footerDownloadBtn'].forEach((id) => {
+  setupDownload(document.getElementById(id));
+});
+
+// Real screenshot gallery
+const shotPreview = document.getElementById('shotPreview');
+const shotLabel = document.getElementById('shotLabel');
+const shotDesc = document.getElementById('shotDesc');
+const screenCards = document.querySelectorAll('.screen-card');
+
+function selectScreenshot(card) {
+  if (!shotPreview || !card) return;
+
+  screenCards.forEach((c) => c.classList.remove('active'));
+  card.classList.add('active');
+
+  const { shot, label, desc } = card.dataset;
+  shotPreview.src = shot;
+  shotPreview.alt = `Real SKROL ${label} screenshot`;
+  if (shotLabel) shotLabel.textContent = label;
+  if (shotDesc) shotDesc.textContent = desc;
+}
+
+screenCards.forEach((card) => {
+  card.addEventListener('click', () => selectScreenshot(card));
+});
+
+// Nav scroll
+const nav = document.querySelector('.nav');
+if (nav) {
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 24);
+  }, { passive: true });
+}
+
+// Fade-in on scroll
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  },
+  { threshold: 0.12 }
+);
+
+document.querySelectorAll('.screen-card, .feature-card, .why-item, .insight-stat').forEach((el) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+
+const style = document.createElement('style');
+style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
+document.head.appendChild(style);

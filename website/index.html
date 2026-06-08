@@ -4,23 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SKROL — Track Less. Live More.</title>
-  <meta name="description" content="SKROL tracks Instagram Reels, YouTube Shorts, and screen habits. Understand your scrolling, build healthier habits, and take back your time.">
+  <meta name="description" content="SKROL tracks Instagram Reels, YouTube Shorts, and screen habits. Real app screenshots. Download free on Android.">
   <meta name="keywords" content="SKROL, screen time, reels tracker, shorts tracker, doomscrolling, digital wellness">
   <meta name="author" content="SKROL">
   <link rel="canonical" href="https://skrol.in/">
   <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="preload" href="assets/screenshots/dashboard.png" as="image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://skrol.in/">
   <meta property="og:title" content="SKROL — Track Less. Live More.">
-  <meta property="og:description" content="Track Reels, Shorts and screen habits. Personal insights to help you scroll less.">
-  <meta property="og:image" content="https://skrol.in/assets/skrol_logo.png">
+  <meta property="og:description" content="Track Reels, Shorts and screen habits. See real app screenshots.">
+  <meta property="og:image" content="https://skrol.in/assets/screenshots/dashboard.png">
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SKROL — Track Less. Live More.">
-  <meta name="twitter:description" content="Track Reels, Shorts and screen habits. Personal insights to help you scroll less.">
+  <meta name="twitter:description" content="Track Reels, Shorts and screen habits. See real app screenshots.">
+  <meta name="twitter:image" content="https://skrol.in/assets/screenshots/dashboard.png">
 
   <link rel="stylesheet" href="css/styles.css">
 
@@ -33,73 +36,194 @@
     "applicationCategory": "HealthApplication",
     "description": "Premium short-form content tracking app helping users reduce doomscrolling.",
     "url": "https://skrol.in",
+    "screenshot": "https://skrol.in/assets/screenshots/dashboard.png",
+    "downloadUrl": "https://skrol.in/downloads/skrol.apk",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
   }
   </script>
 </head>
 <body>
 
-  <!-- Nav -->
+  <div class="page-noise" aria-hidden="true"></div>
+
   <nav class="nav">
     <div class="container nav-inner">
       <a href="/" class="nav-brand">
-        <img src="assets/favicon.png" alt="SKROL" width="36" height="36">
+        <img src="assets/favicon.png" alt="" width="36" height="36">
         SKROL
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#features">Features</a></li>
-        <li><a href="#insights">Insights</a></li>
         <li><a href="#screenshots">Screenshots</a></li>
+        <li><a href="#insights">Insights</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#download" class="nav-cta">Download</a></li>
+        <li><a href="downloads/skrol.apk" id="navDownloadBtn" class="nav-cta" download="skrol.apk">Download</a></li>
       </ul>
       <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
     </div>
   </nav>
 
-  <!-- Hero -->
   <header class="hero">
-    <div class="hero-glow"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
     <div class="container hero-grid">
       <div class="hero-content">
-        <img src="assets/skrol_logo.png" alt="SKROL mascot" class="hero-mascot" width="80" height="80">
+        <div class="pill pill-gold">
+          <span class="pill-dot"></span>
+          Real app · Real data · Private
+        </div>
         <h1>SKROL</h1>
         <p class="hero-tagline">Track Less. Live More.</p>
-        <p class="hero-sub">Understand your scrolling habits, track Reels and Shorts, and build healthier screen habits.</p>
+        <p class="hero-sub">Understand your scrolling habits, track Reels and Shorts, and build healthier screen habits — all on your phone, privately.</p>
         <div class="hero-buttons">
-          <a href="#download" class="btn-primary">Download App</a>
-          <a href="#features" class="btn-secondary">View Features</a>
+          <a href="downloads/skrol.apk" id="heroDownloadBtn" class="btn-primary" download="skrol.apk">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download APK
+          </a>
+          <a href="#screenshots" class="btn-secondary">View Real Screenshots</a>
         </div>
+        <p class="hero-note">Free · No account · Data stays on device</p>
       </div>
-      <div class="phone-wrap">
-        <div class="phone">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <p class="phone-greeting">Good evening</p>
-            <p class="phone-name">You</p>
-            <div class="phone-ring">78</div>
-            <div class="phone-cards">
-              <div class="phone-card">
-                <p class="phone-card-label">Reels</p>
-                <p class="phone-card-value pink">84</p>
-              </div>
-              <div class="phone-card">
-                <p class="phone-card-label">Shorts</p>
-                <p class="phone-card-value red">56</p>
-              </div>
+
+      <div class="hero-visual">
+        <div class="device device-hero">
+          <div class="real-badge">Real Screenshot</div>
+          <div class="device-frame">
+            <div class="device-notch"></div>
+            <div class="device-screen">
+              <img src="assets/screenshots/dashboard.png" alt="Real SKROL dashboard — Attention Score 47, 78 Reels, 11 Shorts" width="390" height="844" loading="eager">
             </div>
           </div>
+        </div>
+        <div class="hero-chip chip-1">
+          <span>Reels</span>
+          <strong class="c-pink">78</strong>
+        </div>
+        <div class="hero-chip chip-2">
+          <span>Score</span>
+          <strong class="c-gold">47</strong>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Features -->
+  <section class="marquee-strip">
+    <div class="marquee-track">
+      <span>Real Screenshots</span><span class="dot">◆</span>
+      <span>Instagram Reels</span><span class="dot">◆</span>
+      <span>YouTube Shorts</span><span class="dot">◆</span>
+      <span>Attention Score</span><span class="dot">◆</span>
+      <span>Focus Mode</span><span class="dot">◆</span>
+      <span>Activity Heatmap</span><span class="dot">◆</span>
+      <span>Real Screenshots</span><span class="dot">◆</span>
+      <span>Instagram Reels</span><span class="dot">◆</span>
+      <span>YouTube Shorts</span><span class="dot">◆</span>
+      <span>Attention Score</span><span class="dot">◆</span>
+      <span>Focus Mode</span><span class="dot">◆</span>
+      <span>Activity Heatmap</span><span class="dot">◆</span>
+    </div>
+  </section>
+
+  <section id="screenshots" class="screens-section">
+    <div class="container">
+      <div class="screens-header">
+        <div>
+          <p class="section-label">Real App Screenshots</p>
+          <h2 class="section-title">See SKROL exactly as it runs on your phone</h2>
+          <p class="section-desc">Every image below is a <strong>real screenshot</strong> captured from the live SKROL Android app — not mockups, not AI renders.</p>
+        </div>
+        <div class="screens-badge">
+          <img src="assets/skrol_logo.png" alt="" width="40" height="40">
+          <div>
+            <strong>100% Real</strong>
+            <span>Captured from Pixel 9</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="screens-stage">
+        <div class="stage-preview">
+          <div class="device device-stage">
+            <div class="real-badge">Live App Capture</div>
+            <div class="device-frame">
+              <div class="device-notch"></div>
+              <div class="device-screen">
+                <img id="shotPreview" src="assets/screenshots/dashboard.png" alt="SKROL Dashboard — real screenshot" width="390" height="844">
+              </div>
+            </div>
+          </div>
+          <div class="stage-info">
+            <p class="stage-label" id="shotLabel">Dashboard</p>
+            <p class="stage-desc" id="shotDesc">Attention Score ring, live Reels &amp; Shorts counts, and your daily summary — all on one screen.</p>
+          </div>
+        </div>
+
+        <div class="screens-gallery">
+          <button class="screen-card active" type="button"
+            data-shot="assets/screenshots/dashboard.png"
+            data-label="Dashboard"
+            data-desc="Attention Score ring (47 Moderate), 78 Reels viewed, 11 Shorts viewed, and Today Summary metrics.">
+            <div class="screen-thumb">
+              <img src="assets/screenshots/dashboard.png" alt="Dashboard real screenshot" loading="lazy">
+              <span class="thumb-badge">Real</span>
+            </div>
+            <div class="screen-meta">
+              <h3>Dashboard</h3>
+              <p>Attention score, Reels &amp; Shorts live counts</p>
+            </div>
+          </button>
+
+          <button class="screen-card" type="button"
+            data-shot="assets/screenshots/insights.png"
+            data-label="Insights"
+            data-desc="This Day breakdown, weekly report grade, Reels vs Shorts severity tags, and social media screen time.">
+            <div class="screen-thumb">
+              <img src="assets/screenshots/insights.png" alt="Insights real screenshot" loading="lazy">
+              <span class="thumb-badge">Real</span>
+            </div>
+            <div class="screen-meta">
+              <h3>Insights</h3>
+              <p>This Day card, weekly report &amp; grades</p>
+            </div>
+          </button>
+
+          <button class="screen-card" type="button"
+            data-shot="assets/screenshots/focus.png"
+            data-label="Focus Mode"
+            data-desc="Pomodoro, Deep Work, Coding, Study, Reading and Exam Mode — pick a session and start focusing.">
+            <div class="screen-thumb">
+              <img src="assets/screenshots/focus.png" alt="Focus Mode real screenshot" loading="lazy">
+              <span class="thumb-badge">Real</span>
+            </div>
+            <div class="screen-meta">
+              <h3>Focus Mode</h3>
+              <p>Pomodoro, deep work &amp; study sessions</p>
+            </div>
+          </button>
+
+          <button class="screen-card" type="button"
+            data-shot="assets/screenshots/stats.png"
+            data-label="Stats &amp; Heatmap"
+            data-desc="Activity heatmap with daily tap-through, scroll timeline per app, and app opens with duration.">
+            <div class="screen-thumb">
+              <img src="assets/screenshots/stats.png" alt="Stats real screenshot" loading="lazy">
+              <span class="thumb-badge">Real</span>
+            </div>
+            <div class="screen-meta">
+              <h3>Stats</h3>
+              <p>Heatmap, timeline &amp; app opens</p>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="features">
     <div class="container">
       <p class="section-label">Features</p>
       <h2 class="section-title">Everything you need to scroll less</h2>
-      <p class="section-desc">Personal insights only — no social comparison. Your data stays on your device.</p>
+      <p class="section-desc">Personal insights only. No social comparison. Your data never leaves your phone.</p>
       <div class="features-grid">
         <article class="feature-card">
           <div class="feature-icon">🎬</div>
@@ -131,102 +255,54 @@
           <h3>Time Lost Calculator</h3>
           <p>See estimated time spent scrolling. Make it tangible.</p>
         </article>
-        <article class="feature-card">
+        <article class="feature-card feature-wide">
           <div class="feature-icon">🎯</div>
           <h3>Focus Mode</h3>
-          <p>Pomodoro sessions and monk mode to reclaim deep work time.</p>
+          <p>Pomodoro, deep work, study sessions and monk mode to reclaim deep work time.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- Insights -->
   <section id="insights" class="insights-section">
-    <div class="container">
-      <p class="section-label">Insights</p>
-      <h2 class="section-title">See what your scrolling really looks like</h2>
-      <p class="section-desc">Real numbers from your day — not estimates.</p>
-      <div class="insights-grid">
-        <div class="insight-stat">
-          <p class="insight-value pink">84</p>
-          <p class="insight-label">Reels Today</p>
+    <div class="container insights-split">
+      <div class="insights-phone">
+        <div class="device device-insights">
+          <div class="real-badge">Real Screenshot</div>
+          <div class="device-frame">
+            <div class="device-notch"></div>
+            <div class="device-screen">
+              <img src="assets/screenshots/insights.png" alt="Real SKROL Insights screen — 78 Reels, 11 Shorts, Weekly Report" loading="lazy">
+            </div>
+          </div>
         </div>
-        <div class="insight-stat">
-          <p class="insight-value red">56</p>
-          <p class="insight-label">Shorts Today</p>
-        </div>
-        <div class="insight-stat">
-          <p class="insight-value gold">1h 47m</p>
-          <p class="insight-label">Screen Time</p>
-        </div>
-        <div class="insight-stat">
-          <p class="insight-value green">18%</p>
-          <p class="insight-label">Less Than Yesterday</p>
+      </div>
+      <div class="insights-copy">
+        <p class="section-label">Insights</p>
+        <h2 class="section-title">Real numbers from your real day</h2>
+        <p class="section-desc">The screenshot on the left is from a live SKROL session. Your dashboard shows exactly this — Reels, Shorts, screen time, and weekly grades pulled from your device.</p>
+        <div class="insights-grid">
+          <div class="insight-stat">
+            <p class="insight-value pink">78</p>
+            <p class="insight-label">Reels Today</p>
+          </div>
+          <div class="insight-stat">
+            <p class="insight-value red">11</p>
+            <p class="insight-label">Shorts Today</p>
+          </div>
+          <div class="insight-stat">
+            <p class="insight-value gold">2h 33m</p>
+            <p class="insight-label">Screen Time</p>
+          </div>
+          <div class="insight-stat">
+            <p class="insight-value green">C</p>
+            <p class="insight-label">Weekly Grade</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Screenshots -->
-  <section id="screenshots">
-    <div class="container">
-      <p class="section-label">App Preview</p>
-      <h2 class="section-title">Designed for clarity</h2>
-      <p class="section-desc">Premium dark UI with your pink brain companion.</p>
-      <div class="screens-row">
-        <div class="screen-item">
-          <div class="screen-phone">
-            <div class="screen-inner">
-              <h4>Dashboard</h4>
-              <div class="screen-mini-card">Attention Score <strong style="color:#d4af37">78</strong></div>
-              <div class="screen-mini-card">Reels <strong style="color:#e1306c">84</strong></div>
-              <div class="screen-mini-card">Shorts <strong style="color:#f00">56</strong></div>
-              <div class="screen-bar"><div class="screen-bar-fill" style="width:72%"></div></div>
-            </div>
-          </div>
-          <p class="screen-caption">Dashboard</p>
-        </div>
-        <div class="screen-item">
-          <div class="screen-phone">
-            <div class="screen-inner">
-              <h4>Insights</h4>
-              <div class="screen-mini-card">This Day</div>
-              <div class="screen-mini-card">Weekly Report <strong style="color:#d4af37">B+</strong></div>
-              <div class="screen-bar"><div class="screen-bar-fill" style="width:55%"></div></div>
-              <div class="screen-bar"><div class="screen-bar-fill" style="width:80%"></div></div>
-            </div>
-          </div>
-          <p class="screen-caption">Insights</p>
-        </div>
-        <div class="screen-item">
-          <div class="screen-phone">
-            <div class="screen-inner">
-              <h4>Focus Mode</h4>
-              <div class="screen-mini-card" style="text-align:center;padding:24px 10px">
-                <strong style="font-size:24px;color:#d4af37">25:00</strong>
-              </div>
-              <div class="screen-mini-card">Pomodoro</div>
-            </div>
-          </div>
-          <p class="screen-caption">Focus Mode</p>
-        </div>
-        <div class="screen-item">
-          <div class="screen-phone">
-            <div class="screen-inner">
-              <h4>Stats</h4>
-              <div class="screen-mini-card">7-day timeline</div>
-              <div class="screen-bar"><div class="screen-bar-fill" style="width:40%"></div></div>
-              <div class="screen-bar"><div class="screen-bar-fill" style="width:65%"></div></div>
-              <div class="screen-bar"><div class="screen-bar-fill" style="width:90%"></div></div>
-            </div>
-          </div>
-          <p class="screen-caption">Stats</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why SKROL -->
   <section id="why">
     <div class="container">
       <p class="section-label">Why SKROL</p>
@@ -264,26 +340,42 @@
     </div>
   </section>
 
-  <!-- Download -->
   <section id="download" class="download-section">
     <div class="container">
       <p class="section-label">Download</p>
-      <h2 class="section-title">Get SKROL today</h2>
+      <h2 class="section-title">Get SKROL on Android</h2>
+      <p class="section-desc center">Direct APK download — Play Store coming soon.</p>
       <div class="download-box">
-        <img src="assets/skrol_logo.png" alt="SKROL" width="72" height="72">
+        <img src="assets/skrol_logo.png" alt="SKROL brain mascot" width="80" height="80">
+        <h3>SKROL for Android</h3>
+        <p class="download-version">Latest release · ~59 MB</p>
         <div class="store-buttons">
-          <a href="#" class="store-btn android" id="playStoreBtn">
-            <span>📱 Download for Android</span>
+          <a href="downloads/skrol.apk" id="downloadBtn" class="store-btn android" download="skrol.apk">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>
+              Download APK
+              <small>Install directly on your phone</small>
+            </span>
           </a>
           <div class="store-btn ios">
-            <span>🍎 Coming Soon on iOS<small>Stay tuned</small></span>
+            <span>
+              Coming Soon on iOS
+              <small>Stay tuned</small>
+            </span>
           </div>
         </div>
+        <details class="install-steps">
+          <summary>How to install the APK</summary>
+          <ol>
+            <li>Download <code>skrol.apk</code> on your Android phone.</li>
+            <li>Open the file and allow install from browser if prompted.</li>
+            <li>Enable Accessibility for Reels/Shorts tracking in SKROL Settings.</li>
+          </ol>
+        </details>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
   <section id="faq">
     <div class="container">
       <p class="section-label">FAQ</p>
@@ -313,19 +405,25 @@
             <p>No. SKROL only counts scroll events and reads UsageStats for screen time. It does not read messages, passwords, or personal content inside apps.</p>
           </div>
         </div>
+        <div class="faq-item">
+          <button class="faq-question">Why download APK instead of Play Store?</button>
+          <div class="faq-answer">
+            <p>SKROL is rolling out on Play Store soon. Until then, you can install the official APK directly from skrol.in — same app, same updates.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="assets/favicon.png" alt="SKROL" width="48" height="48">
+          <img src="assets/favicon.png" alt="" width="48" height="48">
           <h3>SKROL</h3>
           <p class="footer-tagline">Track Less. Live More.</p>
           <p class="footer-url"><a href="https://skrol.in">https://skrol.in</a></p>
+          <a href="downloads/skrol.apk" id="footerDownloadBtn" class="footer-dl" download="skrol.apk">Download APK</a>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>
