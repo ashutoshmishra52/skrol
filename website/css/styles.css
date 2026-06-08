@@ -181,12 +181,6 @@ html[data-platform="ios"] .dl-android-card.platform-muted {
   cursor: default;
 }
 
-.footer-dl-soon {
-  cursor: default;
-  opacity: 0.7;
-  pointer-events: none;
-}
-
 .btn-primary-ios {
   background: #fff;
   color: #080808;
@@ -922,18 +916,6 @@ section { padding: 120px 0; }
   margin-top: 4px;
 }
 
-.footer-downloads {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-.footer-dl-ios {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
 .store-btn span { display: block; text-align: left; }
 
 .store-btn small {
@@ -1033,43 +1015,45 @@ section { padding: 120px 0; }
   margin-bottom: 52px;
 }
 
-.footer-brand img {
-  width: 48px;
-  border-radius: 12px;
+.footer-brand {
+  max-width: 280px;
+}
+
+.footer-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   margin-bottom: 16px;
 }
 
-.footer-brand h3 {
-  font-size: 1.35rem;
-  font-weight: 800;
-  margin-bottom: 6px;
+.footer-brand img.footer-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  margin: 0;
+  box-shadow: none;
+}
+
+.footer-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 2px;
 }
 
 .footer-tagline {
-  color: var(--gold);
-  font-size: 0.94rem;
-  margin-bottom: 10px;
-}
-
-.footer-url {
   color: var(--text-muted);
-  font-size: 0.86rem;
-  margin-bottom: 22px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  margin: 0;
 }
 
-.footer-dl {
-  display: inline-block;
-  padding: 11px 24px;
-  background: var(--gold-dim);
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  border-radius: 100px;
-  font-size: 0.86rem;
-  font-weight: 700;
-  color: var(--gold-light);
-  transition: background 0.2s;
+.footer-about {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 0;
 }
-
-.footer-dl:hover { background: rgba(212, 175, 55, 0.2); }
 
 .footer-col h4 {
   font-size: 0.72rem;
@@ -1269,9 +1253,7 @@ section { padding: 120px 0; }
     padding: 22px 0;
   }
 
-  .footer-brand { text-align: center; }
-  .footer-col { text-align: center; }
-  .footer-dl { display: block; text-align: center; }
+  .footer-brand { text-align: left; max-width: none; }
 }
 
 @media (max-width: 400px) {

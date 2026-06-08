@@ -101,7 +101,6 @@ function applyPlatformUI() {
     setupAndroidDownload(navBtn);
     setupAndroidDownload(heroBtn);
     setupAndroidDownload(document.getElementById('downloadBtn'));
-    setupAndroidDownload(document.getElementById('footerDownloadBtn'));
 
     if (navBtn) {
       navBtn.textContent = copy.navLabel;
@@ -139,7 +138,6 @@ function applyPlatformUI() {
     document.getElementById('androidDownloadCard')?.classList.add('platform-muted');
   } else {
     setupAndroidDownload(document.getElementById('downloadBtn'));
-    setupAndroidDownload(document.getElementById('footerDownloadBtn'));
 
     if (navBtn) navBtn.href = '#download';
     if (heroBtn) {
