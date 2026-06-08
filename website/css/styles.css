@@ -724,6 +724,34 @@ section { padding: 120px 0; }
   font-weight: 500;
 }
 
+/* About / SEO content */
+.about-section {
+  border-block: 1px solid var(--border);
+}
+
+.about-inner {
+  max-width: 760px;
+}
+
+.about-copy p {
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.about-copy p:last-child { margin-bottom: 0; }
+
+.about-copy a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.about-copy strong { color: var(--text); font-weight: 600; }
+
+.about-copy em { color: var(--text-soft); font-style: normal; }
+
 /* Why */
 .why-grid {
   display: grid;
