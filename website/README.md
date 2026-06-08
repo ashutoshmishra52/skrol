@@ -43,32 +43,9 @@ flutter build apk --release
 cp build/app/outputs/flutter-apk/app-release.apk website/downloads/android/skrol.apk
 ```
 
-## iOS IPA (GitHub Actions — no Mac needed)
+## iOS
 
-iOS builds run on GitHub cloud Mac runners: `.github/workflows/ios-build.yml`
-
-### First release
-```bash
-git tag v1.0.1
-git push origin v1.0.1
-```
-
-This builds the IPA and publishes it to [GitHub Releases](https://github.com/ashutoshmishra52/skrol/releases).  
-The website links iPhone users to: `releases/latest/download/skrol.ipa`
-
-### Install on iPhone (signed build required)
-Add these GitHub repo secrets (Settings → Secrets → Actions):
-- `IOS_CERTIFICATE_BASE64` — `.p12` distribution cert (base64)
-- `IOS_CERTIFICATE_PASSWORD`
-- `IOS_KEYCHAIN_PASSWORD` — any random string
-- `IOS_PROVISIONING_PROFILE_BASE64` — provisioning profile (base64)
-
-Without secrets, CI builds an **unsigned** IPA (artifact only — won't install on iPhone until signed).
-
-### Manual build on Mac
-```bash
-./scripts/build_ios_website.sh
-```
+SKROL for iPhone is **coming soon** on the App Store. The website shows a Coming Soon state for iOS — no IPA download until App Store launch.
 
 ## SEO
 

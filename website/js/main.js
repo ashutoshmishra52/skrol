@@ -1,10 +1,9 @@
 // SKROL Landing — skrol.in
 
 const APK_URL = '/downloads/android/skrol.apk';
-const IPA_URL = 'https://github.com/ashutoshmishra52/skrol/releases/latest/download/skrol.ipa';
-const IPA_FALLBACK_URL = '/downloads/ios/skrol.ipa';
 const PLAY_STORE_URL = '';
 const APP_STORE_URL = '';
+const IOS_COMING_SOON = true;
 
 const PLATFORM = document.documentElement.getAttribute('data-platform') || detectPlatform();
 
@@ -18,7 +17,7 @@ function detectPlatform() {
 }
 
 function useDirectFileLink() {
-  return PLATFORM === 'android' || PLATFORM === 'ios';
+  return PLATFORM === 'android';
 }
 
 const PLATFORM_COPY = {
@@ -28,9 +27,9 @@ const PLATFORM_COPY = {
     heroNote: 'Free APK · Reels & Shorts tracking · No account',
   },
   ios: {
-    navLabel: APP_STORE_URL ? 'App Store' : 'Download IPA',
-    heroLabel: APP_STORE_URL ? 'Download on App Store' : 'Download IPA',
-    heroNote: 'Direct IPA · Focus Mode & insights · No account',
+    navLabel: 'Coming Soon',
+    heroLabel: 'Coming Soon on iOS',
+    heroNote: 'iPhone app launching soon · Android available now',
   },
   other: {
     navLabel: 'Download',
@@ -62,6 +61,7 @@ function setupAndroidDownload(el) {
     }
     el.removeAttribute('target');
     el.removeAttribute('rel');
+    el.classList.remove('coming-soon-btn');
   } else {
     el.href = PLAY_STORE_URL;
     el.target = '_blank';
@@ -70,19 +70,20 @@ function setupAndroidDownload(el) {
   }
 }
 
-function setupIOSDownload(el) {
-  if (!el) return;
-  if (APP_STORE_URL) {
+function setupIOSComingSoon(el) {
+  if (!el || el.tagName !== 'A') return;
+  if (APP_STORE_URL && !IOS_COMING_SOON) {
     el.href = APP_STORE_URL;
     el.target = '_blank';
     el.rel = 'noopener';
-    el.removeAttribute('download');
-  } else {
-    el.href = IPA_URL;
-    el.removeAttribute('download');
-    el.removeAttribute('target');
-    el.removeAttribute('rel');
+    el.classList.remove('coming-soon-btn');
+    return;
   }
+  el.href = '#download';
+  el.removeAttribute('download');
+  el.removeAttribute('target');
+  el.removeAttribute('rel');
+  el.classList.add('coming-soon-btn');
 }
 
 function applyPlatformUI() {
@@ -105,7 +106,9 @@ function applyPlatformUI() {
     if (navBtn) {
       navBtn.textContent = copy.navLabel;
       navBtn.classList.add('nav-cta-android');
+      navBtn.classList.remove('nav-cta-muted');
     }
+    if (heroBtn) heroBtn.classList.remove('btn-coming-soon', 'btn-primary-ios');
     if (heroLabel) heroLabel.textContent = copy.heroLabel;
     if (heroNote) heroNote.textContent = copy.heroNote;
     if (androidIcon) androidIcon.hidden = false;
@@ -114,17 +117,19 @@ function applyPlatformUI() {
     document.getElementById('androidDownloadCard')?.classList.add('platform-highlight');
     document.getElementById('iosDownloadCard')?.classList.add('platform-muted');
   } else if (PLATFORM === 'ios') {
-    setupIOSDownload(navBtn);
-    setupIOSDownload(heroBtn);
-    setupIOSDownload(document.getElementById('iosDownloadBtn'));
-    setupIOSDownload(document.getElementById('footerDownloadIosBtn'));
-
     if (navBtn) {
+      navBtn.href = '#download';
       navBtn.textContent = copy.navLabel;
-      navBtn.classList.remove('nav-cta-android');
-      navBtn.classList.add('nav-cta-ios');
+      navBtn.classList.remove('nav-cta-android', 'nav-cta-ios');
+      navBtn.classList.add('nav-cta-muted');
+      navBtn.removeAttribute('download');
     }
-    if (heroBtn) heroBtn.classList.add('btn-primary-ios');
+    if (heroBtn) {
+      heroBtn.href = '#download';
+      heroBtn.classList.add('btn-coming-soon');
+      heroBtn.classList.remove('btn-primary-ios');
+      heroBtn.removeAttribute('download');
+    }
     if (heroLabel) heroLabel.textContent = copy.heroLabel;
     if (heroNote) heroNote.textContent = copy.heroNote;
     if (androidIcon) androidIcon.hidden = true;
@@ -135,13 +140,12 @@ function applyPlatformUI() {
   } else {
     setupAndroidDownload(document.getElementById('downloadBtn'));
     setupAndroidDownload(document.getElementById('footerDownloadBtn'));
-    setupIOSDownload(document.getElementById('iosDownloadBtn'));
-    setupIOSDownload(document.getElementById('footerDownloadIosBtn'));
 
     if (navBtn) navBtn.href = '#download';
     if (heroBtn) {
       heroBtn.href = '#download';
       heroBtn.removeAttribute('download');
+      heroBtn.classList.remove('btn-coming-soon', 'btn-primary-ios');
     }
     if (heroLabel) heroLabel.textContent = copy.heroLabel;
     if (heroNote) heroNote.textContent = copy.heroNote;
