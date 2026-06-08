@@ -1,7 +1,8 @@
 // SKROL Landing — skrol.in
 
 const APK_URL = '/downloads/android/skrol.apk';
-const IPA_URL = '/downloads/ios/skrol.ipa';
+const IPA_URL = 'https://github.com/ashutoshmishra52/skrol/releases/latest/download/skrol.ipa';
+const IPA_FALLBACK_URL = '/downloads/ios/skrol.ipa';
 const PLAY_STORE_URL = '';
 const APP_STORE_URL = '';
 
