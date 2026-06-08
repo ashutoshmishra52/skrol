@@ -68,12 +68,17 @@
     <div class="hero-orb hero-orb-2"></div>
     <div class="container hero-grid">
       <div class="hero-content">
+        <div class="hero-brand-lockup">
+          <img src="assets/skrol_logo.png" alt="" class="hero-logo" width="72" height="72">
+          <div>
+            <h1>SKROL</h1>
+            <p class="hero-tagline">Track Less. Live More.</p>
+          </div>
+        </div>
         <div class="pill pill-gold">
           <span class="pill-dot"></span>
           Privacy-first · Android
         </div>
-        <h1>SKROL</h1>
-        <p class="hero-tagline">Track Less. Live More.</p>
         <p class="hero-sub">Understand your scrolling habits, track Reels and Shorts, and build healthier screen habits — all on your phone, privately.</p>
         <div class="hero-buttons">
           <a href="downloads/skrol.apk" id="heroDownloadBtn" class="btn-primary" download="skrol.apk">
@@ -144,14 +149,17 @@
 
       <div class="screens-stage">
         <div class="stage-preview">
-          <div class="device device-stage">
-            <div class="device-frame">
-              <div class="device-notch"></div>
-              <div class="device-screen">
-                <img id="shotPreview" src="assets/screenshots/dashboard.png" alt="SKROL Dashboard" width="390" height="844">
+          <button type="button" class="stage-preview-btn" id="stagePreviewBtn" aria-label="View full screenshot">
+            <div class="device device-stage">
+              <div class="device-frame">
+                <div class="device-notch"></div>
+                <div class="device-screen">
+                  <img id="shotPreview" src="assets/screenshots/dashboard.png" alt="SKROL Dashboard" width="390" height="844">
+                </div>
               </div>
             </div>
-          </div>
+            <span class="expand-hint">Tap to expand</span>
+          </button>
           <div class="stage-info">
             <p class="stage-label" id="shotLabel">Dashboard</p>
             <p class="stage-desc" id="shotDesc">Attention Score ring, live Reels &amp; Shorts counts, and your daily summary — all on one screen.</p>
@@ -165,6 +173,7 @@
             data-desc="Attention Score ring (47 Moderate), 78 Reels viewed, 11 Shorts viewed, and Today Summary metrics.">
             <div class="screen-thumb">
               <img src="assets/screenshots/dashboard.png" alt="SKROL Dashboard" loading="lazy">
+              <span class="expand-icon" aria-hidden="true">⤢</span>
             </div>
             <div class="screen-meta">
               <h3>Dashboard</h3>
@@ -178,6 +187,7 @@
             data-desc="This Day breakdown, weekly report grade, Reels vs Shorts severity tags, and social media screen time.">
             <div class="screen-thumb">
               <img src="assets/screenshots/insights.png" alt="SKROL Insights" loading="lazy">
+              <span class="expand-icon" aria-hidden="true">⤢</span>
             </div>
             <div class="screen-meta">
               <h3>Insights</h3>
@@ -191,6 +201,7 @@
             data-desc="Pomodoro, Deep Work, Coding, Study, Reading and Exam Mode — pick a session and start focusing.">
             <div class="screen-thumb">
               <img src="assets/screenshots/focus.png" alt="SKROL Focus Mode" loading="lazy">
+              <span class="expand-icon" aria-hidden="true">⤢</span>
             </div>
             <div class="screen-meta">
               <h3>Focus Mode</h3>
@@ -204,6 +215,7 @@
             data-desc="Activity heatmap with daily tap-through, scroll timeline per app, and app opens with duration.">
             <div class="screen-thumb">
               <img src="assets/screenshots/stats.png" alt="SKROL Stats and Heatmap" loading="lazy">
+              <span class="expand-icon" aria-hidden="true">⤢</span>
             </div>
             <div class="screen-meta">
               <h3>Stats</h3>
@@ -438,6 +450,22 @@
       <p class="footer-bottom">© 2026 SKROL. All rights reserved.</p>
     </div>
   </footer>
+
+  <div class="lightbox" id="shotLightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxCaption" hidden>
+    <div class="lightbox-backdrop" data-close></div>
+    <div class="lightbox-panel">
+      <button class="lightbox-close" type="button" data-close aria-label="Close screenshot">✕</button>
+      <div class="lightbox-device">
+        <div class="device-frame">
+          <div class="device-notch"></div>
+          <div class="device-screen">
+            <img id="lightboxImg" src="" alt="">
+          </div>
+        </div>
+      </div>
+      <p class="lightbox-caption" id="lightboxCaption">Dashboard</p>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
