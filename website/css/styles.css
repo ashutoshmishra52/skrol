@@ -316,24 +316,6 @@ strong { color: var(--gold-light); font-weight: 600; }
   object-position: top;
 }
 
-.real-badge {
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  padding: 6px 16px;
-  background: linear-gradient(135deg, var(--gold), #9a7b22);
-  color: #080808;
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border-radius: 100px;
-  white-space: nowrap;
-  box-shadow: 0 4px 20px var(--gold-glow);
-}
-
 /* Hero visual */
 .hero-visual {
   position: relative;
@@ -580,21 +562,6 @@ section { padding: 120px 0; }
   height: 100%;
   object-fit: cover;
   object-position: top;
-}
-
-.thumb-badge {
-  position: absolute;
-  bottom: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 2px 8px;
-  background: var(--gold);
-  color: #080808;
-  font-size: 0.55rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  border-radius: 100px;
 }
 
 .screen-meta h3 {

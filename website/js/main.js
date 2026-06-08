@@ -42,7 +42,7 @@ function setupDownload(el) {
   setupDownload(document.getElementById(id));
 });
 
-// Real screenshot gallery
+// Screenshot gallery
 const shotPreview = document.getElementById('shotPreview');
 const shotLabel = document.getElementById('shotLabel');
 const shotDesc = document.getElementById('shotDesc');
@@ -56,7 +56,7 @@ function selectScreenshot(card) {
 
   const { shot, label, desc } = card.dataset;
   shotPreview.src = shot;
-  shotPreview.alt = `Real SKROL ${label} screenshot`;
+  shotPreview.alt = `SKROL ${label}`;
   if (shotLabel) shotLabel.textContent = label;
   if (shotDesc) shotDesc.textContent = desc;
 }
