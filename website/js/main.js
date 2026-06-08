@@ -193,7 +193,7 @@ document.querySelectorAll('.faq-question').forEach((btn) => {
 const shotPreview = document.getElementById('shotPreview');
 const shotLabel = document.getElementById('shotLabel');
 const shotDesc = document.getElementById('shotDesc');
-const screenCards = document.querySelectorAll('.screen-card');
+const previewTabs = document.querySelectorAll('.preview-tab');
 const stagePreviewBtn = document.getElementById('stagePreviewBtn');
 const lightbox = document.getElementById('shotLightbox');
 const lightboxImg = document.getElementById('lightboxImg');
@@ -204,13 +204,17 @@ let activeShot = {
   label: 'Dashboard',
 };
 
-function selectScreenshot(card) {
-  if (!card) return;
+function selectScreenshot(tab) {
+  if (!tab) return;
 
-  screenCards.forEach((c) => c.classList.remove('active'));
-  card.classList.add('active');
+  previewTabs.forEach((t) => {
+    t.classList.remove('active');
+    t.setAttribute('aria-selected', 'false');
+  });
+  tab.classList.add('active');
+  tab.setAttribute('aria-selected', 'true');
 
-  const { shot, label, desc } = card.dataset;
+  const { shot, label, desc } = tab.dataset;
   activeShot = { src: shot, label };
 
   if (shotPreview) {
@@ -240,11 +244,8 @@ function closeLightbox() {
   unlockScroll();
 }
 
-screenCards.forEach((card) => {
-  card.addEventListener('click', () => {
-    selectScreenshot(card);
-    openLightbox(card.dataset.shot, card.dataset.label);
-  });
+previewTabs.forEach((tab) => {
+  tab.addEventListener('click', () => selectScreenshot(tab));
 });
 
 if (stagePreviewBtn) {
@@ -282,7 +283,7 @@ const observer = new IntersectionObserver(
 );
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const animateTargets = document.querySelectorAll('.screen-card, .feature-card, .why-item, .insight-stat, .download-box.platform');
+const animateTargets = document.querySelectorAll('.feature-card, .why-item, .insight-stat, .download-box.platform, .preview-shell');
 
 if (!prefersReducedMotion) {
   animateTargets.forEach((el) => {

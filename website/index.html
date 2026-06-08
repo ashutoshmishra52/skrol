@@ -165,88 +165,53 @@
   <section id="screenshots" class="screens-section">
     <div class="container">
       <div class="screens-header">
-        <div>
-          <p class="section-label">App Preview</p>
-          <h2 class="section-title">Designed for clarity</h2>
-          <p class="section-desc">A focused interface that surfaces what matters — your attention score, daily counts, and weekly trends at a glance.</p>
-        </div>
+        <p class="section-label">Product</p>
+        <h2 class="section-title">See SKROL in action</h2>
+        <p class="section-desc center">Real screens from the app — dashboard, insights, focus sessions, and activity history.</p>
       </div>
 
-      <div class="screens-stage">
-        <div class="stage-preview">
-          <button type="button" class="stage-preview-btn" id="stagePreviewBtn" aria-label="View full screenshot">
-            <div class="device device-stage">
-              <div class="device-frame">
-                <div class="device-notch"></div>
-                <div class="device-screen">
-                  <img id="shotPreview" src="assets/screenshots/dashboard.png" alt="SKROL Dashboard" width="390" height="844">
-                </div>
-              </div>
-            </div>
-            <span class="expand-hint">Tap to expand</span>
-          </button>
-          <div class="stage-info">
-            <p class="stage-label" id="shotLabel">Dashboard</p>
-            <p class="stage-desc" id="shotDesc">Attention Score ring, live Reels &amp; Shorts counts, and your daily summary — all on one screen.</p>
-          </div>
-        </div>
-
-        <div class="screens-gallery">
-          <button class="screen-card active" type="button"
+      <div class="preview-shell">
+        <div class="preview-tabs" role="tablist" aria-label="App screenshots">
+          <button class="preview-tab active" type="button" role="tab" aria-selected="true"
             data-shot="assets/screenshots/dashboard.png"
             data-label="Dashboard"
-            data-desc="Attention Score ring (47 Moderate), 78 Reels viewed, 11 Shorts viewed, and Today Summary metrics.">
-            <div class="screen-thumb">
-              <img src="assets/screenshots/dashboard.png" alt="SKROL Dashboard" loading="lazy">
-              <span class="expand-icon" aria-hidden="true">⤢</span>
-            </div>
-            <div class="screen-meta">
-              <h3>Dashboard</h3>
-              <p>Attention score, Reels &amp; Shorts live counts</p>
-            </div>
+            data-desc="Attention score, live Reels and Shorts counts, and your daily summary in one view.">
+            Dashboard
           </button>
-
-          <button class="screen-card" type="button"
+          <button class="preview-tab" type="button" role="tab" aria-selected="false"
             data-shot="assets/screenshots/insights.png"
             data-label="Insights"
-            data-desc="This Day breakdown, weekly report grade, Reels vs Shorts severity tags, and social media screen time.">
-            <div class="screen-thumb">
-              <img src="assets/screenshots/insights.png" alt="SKROL Insights" loading="lazy">
-              <span class="expand-icon" aria-hidden="true">⤢</span>
-            </div>
-            <div class="screen-meta">
-              <h3>Insights</h3>
-              <p>This Day card, weekly report &amp; grades</p>
-            </div>
+            data-desc="Daily breakdown, weekly grade, and screen time by app.">
+            Insights
           </button>
-
-          <button class="screen-card" type="button"
+          <button class="preview-tab" type="button" role="tab" aria-selected="false"
             data-shot="assets/screenshots/focus.png"
             data-label="Focus Mode"
-            data-desc="Pomodoro, Deep Work, Coding, Study, Reading and Exam Mode — pick a session and start focusing.">
-            <div class="screen-thumb">
-              <img src="assets/screenshots/focus.png" alt="SKROL Focus Mode" loading="lazy">
-              <span class="expand-icon" aria-hidden="true">⤢</span>
-            </div>
-            <div class="screen-meta">
-              <h3>Focus Mode</h3>
-              <p>Pomodoro, deep work &amp; study sessions</p>
-            </div>
+            data-desc="Pomodoro, deep work, study, and reading sessions when you need to disconnect.">
+            Focus
           </button>
-
-          <button class="screen-card" type="button"
+          <button class="preview-tab" type="button" role="tab" aria-selected="false"
             data-shot="assets/screenshots/stats.png"
-            data-label="Stats &amp; Heatmap"
-            data-desc="Activity heatmap with daily tap-through, scroll timeline per app, and app opens with duration.">
-            <div class="screen-thumb">
-              <img src="assets/screenshots/stats.png" alt="SKROL Stats and Heatmap" loading="lazy">
-              <span class="expand-icon" aria-hidden="true">⤢</span>
-            </div>
-            <div class="screen-meta">
-              <h3>Stats</h3>
-              <p>Heatmap, timeline &amp; app opens</p>
-            </div>
+            data-label="Activity"
+            data-desc="Heatmap, scroll timeline, and per-app usage over time.">
+            Activity
           </button>
+        </div>
+
+        <button type="button" class="preview-device-btn" id="stagePreviewBtn" aria-label="View full screenshot">
+          <div class="preview-device">
+            <div class="device-frame device-frame-pro">
+              <div class="device-notch"></div>
+              <div class="device-screen">
+                <img id="shotPreview" src="assets/screenshots/dashboard.png" alt="SKROL Dashboard" width="390" height="844">
+              </div>
+            </div>
+          </div>
+        </button>
+
+        <div class="preview-caption">
+          <h3 class="preview-title" id="shotLabel">Dashboard</h3>
+          <p class="preview-desc" id="shotDesc">Attention score, live Reels and Shorts counts, and your daily summary in one view.</p>
         </div>
       </div>
     </div>
