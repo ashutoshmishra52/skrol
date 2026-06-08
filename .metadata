@@ -1,0 +1,5 @@
+{
+  "project_type": "app",
+  "platforms": ["android"],
+  "description": "ScrollLess - Less Scrolling. More Living."
+}

@@ -1,0 +1,3 @@
+-keep class com.ashutoshmishra.scrollless.** { *; }
+-keep class io.flutter.** { *; }
+-dontwarn io.flutter.**

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SKROL</string>
+    <string name="widget_description">Track your attention score, focus time, and streaks</string>
+    <string name="accessibility_description">SKROL counts each reel and short scroll and shows a live counter on screen. Required for accurate tracking on Instagram Reels and YouTube Shorts.</string>
+</resources>
