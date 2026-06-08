@@ -40,7 +40,7 @@ class SkrolLogo extends StatelessWidget {
         _asset,
         width: size,
         height: size,
-        fit: BoxFit.cover,
+        fit: BoxFit.contain,
         filterQuality: FilterQuality.high,
         errorBuilder: (_, __, ___) => _FallbackLogo(size: size),
       ),
@@ -203,9 +203,12 @@ class SkrolLogoAvatar extends StatelessWidget {
         ],
       ),
       child: ClipOval(
-        child: SkrolLogo(
-          size: size,
-          variant: SkrolLogoVariant.icon,
+        child: Padding(
+          padding: EdgeInsets.all(size * 0.04),
+          child: SkrolLogo(
+            size: size * 0.92,
+            variant: SkrolLogoVariant.icon,
+          ),
         ),
       ),
     );

@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>SKROL — Screen Time &amp; Reels Tracker App | Android &amp; iOS</title>
-  <meta name="description" content="SKROL is a free digital wellness app to track Instagram Reels, YouTube Shorts, and screen time. Focus mode, weekly reports, and private on-device insights. Download for Android and iPhone.">
-  <meta name="keywords" content="SKROL, skrol app, screen time tracker, reels tracker, shorts tracker, doomscrolling app, digital wellness, Instagram reels counter, YouTube shorts tracker, focus mode app, Android APK, iOS app">
+  <title>SKROL — Instagram Reels &amp; YouTube Shorts Tracker | Free Android APK</title>
+  <meta name="description" content="SKROL tracks Instagram Reels, YouTube Shorts, and screen time on your phone — privately, with no account. Free Android APK download. Focus mode, weekly insights, and digital wellness tools.">
+  <meta name="keywords" content="SKROL, skrol app, skrol.in, screen time tracker, Instagram reels counter, YouTube shorts tracker, doomscrolling app, digital wellness app, focus mode app, Android APK download, reels tracker India">
   <meta name="author" content="SKROL">
+  <meta name="application-name" content="SKROL">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="googlebot" content="index, follow">
   <meta name="theme-color" content="#0A0A0F">
   <link rel="canonical" href="https://skrol.in/">
-  <link rel="icon" href="assets/favicon-64.png" type="image/png">
+  <link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64">
   <link rel="apple-touch-icon" href="assets/logo-nav.png">
   <link rel="preload" href="assets/logo-hero.png" as="image">
+  <link rel="preload" href="css/styles.css" as="style">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -22,15 +24,20 @@
   <meta property="og:url" content="https://skrol.in/">
   <meta property="og:site_name" content="SKROL">
   <meta property="og:locale" content="en_IN">
-  <meta property="og:title" content="SKROL — Screen Time &amp; Reels Tracker">
-  <meta property="og:description" content="Track Reels, Shorts and screen habits. Personal insights to help you scroll less. Free on Android and iOS.">
-  <meta property="og:image" content="https://skrol.in/assets/screenshots/dashboard.png">
-  <meta property="og:image:alt" content="SKROL app dashboard showing attention score and Reels count">
+  <meta property="og:title" content="SKROL — Track Less. Live More.">
+  <meta property="og:description" content="Free app to track Instagram Reels, YouTube Shorts, and screen time. Private on-device insights. Download SKROL for Android.">
+  <meta property="og:image" content="https://skrol.in/assets/og-image.png">
+  <meta property="og:image:secure_url" content="https://skrol.in/assets/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SKROL — Track Less. Live More. Reels, Shorts and screen time tracker">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SKROL — Track Less. Live More.">
-  <meta name="twitter:description" content="Track Reels, Shorts and screen habits. Personal insights to help you scroll less.">
-  <meta name="twitter:image" content="https://skrol.in/assets/screenshots/dashboard.png">
+  <meta name="twitter:description" content="Track Instagram Reels, YouTube Shorts, and screen time. Free Android APK — private, no account needed.">
+  <meta name="twitter:image" content="https://skrol.in/assets/og-image.png">
+  <meta name="twitter:image:alt" content="SKROL digital wellness app — Reels and screen time tracker">
   <meta name="apple-mobile-web-app-title" content="SKROL">
 
   <link rel="stylesheet" href="css/styles.css">
@@ -50,39 +57,76 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
+        "@type": "WebSite",
+        "@id": "https://skrol.in/#website",
         "name": "SKROL",
         "url": "https://skrol.in",
-        "logo": "https://skrol.in/assets/logo-hero.png",
+        "description": "Official website for SKROL — Instagram Reels, YouTube Shorts, and screen time tracker for Android.",
+        "inLanguage": "en-IN",
+        "publisher": { "@id": "https://skrol.in/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://skrol.in/#webpage",
+        "url": "https://skrol.in/",
+        "name": "SKROL — Instagram Reels & YouTube Shorts Tracker",
+        "description": "Download SKROL free for Android. Track Reels, Shorts, screen time, and focus habits privately on your device.",
+        "isPartOf": { "@id": "https://skrol.in/#website" },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://skrol.in/assets/og-image.png",
+          "width": 1200,
+          "height": 630
+        },
+        "inLanguage": "en-IN"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://skrol.in/#organization",
+        "name": "SKROL",
+        "url": "https://skrol.in",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://skrol.in/assets/logo-hero.png",
+          "width": 800,
+          "height": 630
+        },
         "email": "hello@skrol.in",
         "sameAs": ["https://github.com/ashutoshmishra52/skrol"]
       },
       {
-        "@type": "WebSite",
-        "name": "SKROL",
-        "url": "https://skrol.in",
-        "description": "Official website for SKROL — screen time and Reels tracker app."
-      },
-      {
         "@type": "MobileApplication",
-        "name": "SKROL for Android",
+        "@id": "https://skrol.in/#android-app",
+        "name": "SKROL",
         "operatingSystem": "Android",
         "applicationCategory": "HealthApplication",
-        "description": "Track Instagram Reels, YouTube Shorts, and screen time with private on-device insights.",
+        "applicationSubCategory": "Digital Wellness",
+        "description": "Track Instagram Reels, YouTube Shorts, and screen time with private on-device insights. Focus mode and weekly reports included.",
         "url": "https://skrol.in",
         "downloadUrl": "https://skrol.in/downloads/android/skrol.apk",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
-        "screenshot": "https://skrol.in/assets/screenshots/dashboard.png"
+        "installUrl": "https://skrol.in/downloads/android/skrol.apk",
+        "softwareVersion": "1.0",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR", "availability": "https://schema.org/InStock" },
+        "featureList": "Instagram Reels tracking, YouTube Shorts tracking, Screen time analytics, Focus mode, Weekly insights, On-device privacy",
+        "screenshot": [
+          "https://skrol.in/assets/screenshots/dashboard.png",
+          "https://skrol.in/assets/screenshots/insights.png",
+          "https://skrol.in/assets/screenshots/focus.png"
+        ],
+        "image": "https://skrol.in/assets/og-image.png",
+        "author": { "@id": "https://skrol.in/#organization" }
       },
       {
         "@type": "MobileApplication",
+        "@id": "https://skrol.in/#ios-app",
         "name": "SKROL for iOS",
         "operatingSystem": "iOS",
         "applicationCategory": "HealthApplication",
-        "description": "Focus mode, habits, and digital wellness insights for iPhone. Coming soon on the App Store.",
+        "description": "Focus mode, habits, and digital wellness insights for iPhone. Launching soon on the App Store.",
         "url": "https://skrol.in",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
-        "screenshot": "https://skrol.in/assets/screenshots/focus.png"
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR", "availability": "https://schema.org/PreOrder" },
+        "screenshot": "https://skrol.in/assets/screenshots/focus.png",
+        "image": "https://skrol.in/assets/og-image.png"
       },
       {
         "@type": "FAQPage",
@@ -100,7 +144,7 @@
             "name": "Is SKROL available on iPhone?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. SKROL for iOS includes Focus Mode, habits, and insights. Automatic Reels tracking is available on Android."
+              "text": "SKROL for iOS is coming soon on the App Store. The Android app is available now with full Reels, Shorts, and screen time tracking via the free APK at skrol.in."
             }
           },
           {
