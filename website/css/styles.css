@@ -87,11 +87,12 @@ strong { color: var(--gold-light); font-weight: 600; }
 
 .nav-brand img,
 .nav-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  box-shadow: 0 0 24px rgba(255, 158, 205, 0.22);
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
   flex-shrink: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .nav-brand span {
@@ -215,11 +216,12 @@ html[data-platform="ios"] .hero-dl-icon-ios {
 }
 
 .hero-logo {
-  width: min(320px, 88vw);
+  width: min(240px, 72vw);
   height: auto;
-  margin: 0 auto 24px;
+  margin: 0 auto 20px;
   border-radius: 0;
-  filter: drop-shadow(0 12px 40px rgba(255, 158, 205, 0.15));
+  background: transparent;
+  filter: drop-shadow(0 8px 24px rgba(255, 158, 205, 0.12));
 }
 
 .hero-eyebrow {
@@ -800,17 +802,17 @@ section { padding: 120px 0; }
 
 .download-box img,
 .footer-logo {
-  width: 72px;
-  height: 72px;
-  border-radius: 18px;
-  box-shadow: 0 0 48px rgba(255, 158, 205, 0.22);
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .footer-brand img.footer-logo {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  margin: 0 auto;
+  width: 48px;
+  height: 48px;
+  margin: 0;
 }
 
 .download-box h3 {
@@ -1197,7 +1199,7 @@ section { padding: 120px 0; }
 
   .hero { padding-top: 100px; }
 
-  .hero-logo { width: min(280px, 86vw); height: auto; }
+  .hero-logo { width: min(220px, 78vw); height: auto; }
 
   .hero h1 { font-size: 2.75rem; }
 
