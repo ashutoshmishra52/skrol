@@ -1,12 +1,4 @@
 {
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.skrol.in" }],
-      "destination": "https://skrol.in/:path*",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/downloads/android/skrol.apk",
